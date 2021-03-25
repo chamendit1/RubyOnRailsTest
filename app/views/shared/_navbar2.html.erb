@@ -1,0 +1,132 @@
+<!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Indo Plastik Jaya</button>
+</div>
+
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s10 w3-bar">
+      <% if Current.user %>
+      <%= link_to Current.user.email, edit_password_path, class: "nav-link" %>
+      <% else %>
+      <span>Login</span><br>
+      <% end %>
+      
+
+
+      <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-outline-secondary" %>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+    </div>
+  </div>
+  <hr>
+  <div class="w3-bar-block">
+    <% if Current.user %>
+      <%= link_to "Dashboard", dashboard_path, class: "w3-bar-item w3-button w3-padding w3-blue" %>
+      
+      <div class="w3-dropdown-click">
+        <button class="w3-button" onclick="myDropFunc()">Business</button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+          <%= link_to "Business snapshot", business_snapshot_path, class: "nav-link" %>
+          <%= link_to "Sales Overview", business_sales_path, class: "nav-link" %>
+          <%= link_to "Invoices", business_invoices_path, class: "nav-link" %>
+          <%= link_to "Inventory", business_inventory_path, class: "nav-link" %>
+          <%= link_to "Expenses", business_expenses_path, class: "nav-link" %>
+          <%= link_to "Purchases", business_purchases_path, class: "nav-link" %>
+        </div>
+      </div>
+
+      <%= link_to "Orders", users_path, class: "nav-link" %>
+      <%= link_to "Shifts", users_path, class: "nav-link" %>
+      <%= link_to "User Management", users_path, class: "nav-link" %>
+      <%= link_to "About", about_path, class: "nav-link" %>
+      <%= link_to "Settings", users_path, class: "nav-link" %>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to "Sign Up", sign_up_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Login", sign_in_path, class: "nav-link" %>
+      </li>
+    <% end %>
+
+
+    
+
+
+    <br><br>
+
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+</script>
+
+<script>
+function myAccFunc() {
+  var x = document.getElementById("demoAcc");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    x.previousElementSibling.className += " w3-green";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+    x.previousElementSibling.className = 
+    x.previousElementSibling.className.replace(" w3-green", "");
+  }
+}
+
+function myDropFunc() {
+  var x = document.getElementById("demoDrop");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    x.previousElementSibling.className += " w3-green";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+    x.previousElementSibling.className = 
+    x.previousElementSibling.className.replace(" w3-green", "");
+  }
+}
+</script>

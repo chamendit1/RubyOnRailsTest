@@ -78,7 +78,9 @@ Rails.application.routes.draw do
 	#get "create_invoice"
 	#get "create_bill"
 	#get "create_contact"
+	#get "employee"
 	#get "create_purchase_order"
+	#get "sales"
 
 	get "about-us", to: "about#index", as: :about
 
