@@ -1,10 +1,10 @@
-class PasswordResetsControllwe < ApplicationController
+class PasswordResetsController < ApplicationController
 	def new
 
 	end
 
 	def create
-		@user = User.findby(email: params[:email])
+		@user = User.find_by(email: params[:email])
 
 		if @user.present?
 			# Send Email

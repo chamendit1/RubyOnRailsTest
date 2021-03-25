@@ -1,38 +1,101 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <%= link_to "Navbar", root_path, class: "navbar-brand" %>
+    <%= link_to "Indo Plastik Jaya", dashboard_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
+
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to "Home", root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "About", about_path, class: "nav-link" %>
-        </li>
-        
+        <% if Current.user %>
 
-
-
-
-
-
-
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+          <li class="nav-item">
+            <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
+          </li>
+   
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Business
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "Business Snapshot", business_snapshot_path, class: "dropdown-item" %>
+              <%= link_to "Sales Overview", business_sales_path, class: "dropdown-item" %>
+              <%= link_to "Invoices", business_invoices_path, class: "dropdown-item" %>
+              <%= link_to "Inventory", business_inventory_path, class: "dropdown-item" %>
+              <%= link_to "Expenses", business_expenses_path, class: "dropdown-item" %>
+              <%= link_to "Purchases", business_purchases_path, class: "dropdown-item" %>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Accounting
+          </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "Bank Accounts", users_path, class: "dropdown-item" %>
+              <%= link_to "Assets", dashboard_path, class: "dropdown-item" %>
+              <%= link_to "Reports", dashboard_path, class: "dropdown-item" %>
+              <li><hr class="dropdown-divider"></li>
+              <%= link_to "Account transaction", dashboard_path, class: "dropdown-item" %>
+              <%= link_to "Balance Sheet", dashboard_path, class: "dropdown-item" %>
+              <%= link_to "Profit and Loss", dashboard_path, class: "dropdown-item" %>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Payroll
+          </a>
+
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "Overview", users_path, class: "dropdown-item" %>
+              <%= link_to "Employees", dashboard_path, class: "dropdown-item" %>
+              <%= link_to "Pay Employees", dashboard_path, class: "dropdown-item" %>
+              <%= link_to "Leave", dashboard_path, class: "dropdown-item" %>
+              <%= link_to "Timesheets", dashboard_path, class: "dropdown-item" %>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Contacts
+          </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "Customer", users_path, class: "dropdown-item" %>
+              <%= link_to "Supplier", dashboard_path, class: "dropdown-item" %>
+            </ul>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Create
+          </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "Invoice", users_path, class: "dropdown-item" %>
+              <%= link_to "Bill", dashboard_path, class: "dropdown-item" %>
+              <%= link_to "Contact", dashboard_path, class: "dropdown-item" %>
+              <%= link_to "Purchase Order", dashboard_path, class: "dropdown-item" %>
+            </ul>
+          </li>
+
+
+
+
+          <li class="nav-item">
+            <%= link_to "About", about_path, class: "nav-link" %>
+          </li>
+        <% end %>
+       </ul>
+        
+      
+
+
+
+
+
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if Current.user %>
@@ -46,6 +109,9 @@
           </li>
 
         <% else %>
+
+
+
           <li class="nav-item">
             <%= link_to "Sign Up", sign_up_path, class: "nav-link" %>
           </li>
